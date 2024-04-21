@@ -1,4 +1,4 @@
-package ru.anydevprojects.locatask.allTask.presentation
+package ru.anydevprojects.locatask.allTasks.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -21,7 +21,7 @@ import ru.anydevprojects.locatask.networkStateMonitoring.NetworkStateCheckServic
 import ru.anydevprojects.locatask.root.Screens
 
 @Composable
-fun AllTaskScreen(navController: NavHostController) {
+fun AllTasksScreen(navController: NavHostController) {
     val applicationContext = LocalContext.current.applicationContext
     Scaffold(
         floatingActionButton = {

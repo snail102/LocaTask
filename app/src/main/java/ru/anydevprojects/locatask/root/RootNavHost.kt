@@ -6,20 +6,24 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import ru.anydevprojects.locatask.allTask.presentation.AllTaskScreen
 import ru.anydevprojects.locatask.editTask.presentation.EditTaskScreen
+import ru.anydevprojects.locatask.rootBottomNav.RootBottomScreen
 
 @Composable
 fun RootNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screens.AllTask.route) {
-        composable(route = Screens.AllTask.route) {
-            AllTaskScreen(navController = navController)
+    NavHost(navController = navController, startDestination = Screens.BottomNavGraph.route) {
+        composable(route = Screens.BottomNavGraph.route) {
+            RootBottomScreen(rootNavController = navController)
         }
-        composable(route = Screens.EditTask.route,   arguments = listOf(
-            navArgument(Screens.EditTask.taskIdArg) {
-                type = NavType.StringType
-            }
-        )) {backStackEntry ->
+
+        composable(
+            route = Screens.EditTask.route,
+            arguments = listOf(
+                navArgument(Screens.EditTask.taskIdArg) {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
             val taskId = backStackEntry.arguments?.getString(
                 Screens.EditTask.taskIdArg
             ) ?: throw Exception("Empty argument taskId")

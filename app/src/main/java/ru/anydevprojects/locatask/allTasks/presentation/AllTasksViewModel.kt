@@ -1,20 +1,19 @@
-package ru.anydevprojects.locatask.allTask.presentation
+package ru.anydevprojects.locatask.allTasks.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import ru.anydevprojects.locatask.allTask.core.mvi.MVI
-import ru.anydevprojects.locatask.allTask.core.mvi.mvi
-import ru.anydevprojects.locatask.allTask.domain.AllTaskRepository
-import ru.anydevprojects.locatask.allTask.presentation.mappers.toPreviewTask
-import ru.anydevprojects.locatask.allTask.presentation.models.EventAllTask
-import ru.anydevprojects.locatask.allTask.presentation.models.IntentAllTask
-import ru.anydevprojects.locatask.allTask.presentation.models.StateAllTask
+import ru.anydevprojects.locatask.allTasks.domain.AllTasksRepository
+import ru.anydevprojects.locatask.allTasks.presentation.mappers.toPreviewTask
+import ru.anydevprojects.locatask.allTasks.presentation.models.EventAllTask
+import ru.anydevprojects.locatask.allTasks.presentation.models.IntentAllTask
+import ru.anydevprojects.locatask.allTasks.presentation.models.StateAllTask
+import ru.anydevprojects.locatask.core.mvi.MVI
+import ru.anydevprojects.locatask.core.mvi.mvi
 
-class AllTaskViewModel(
-    private val allTaskRepository: AllTaskRepository
+class AllTasksViewModel(
+    private val allTasksRepository: AllTasksRepository
 ) : ViewModel(),
     MVI<StateAllTask, IntentAllTask, EventAllTask> by mvi(StateAllTask(isLoading = true)) {
 
@@ -23,7 +22,7 @@ class AllTaskViewModel(
     }
 
     private fun observeAllTask() {
-        allTaskRepository.allTask().onEach { allTask ->
+        allTasksRepository.allTasks().onEach { allTask ->
             val allPreviewTask = allTask.map { task ->
                 task.toPreviewTask()
             }
@@ -37,6 +36,5 @@ class AllTaskViewModel(
     }
 
     override fun onIntent(intent: IntentAllTask) {
-
     }
 }

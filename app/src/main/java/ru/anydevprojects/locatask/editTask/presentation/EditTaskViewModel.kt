@@ -3,20 +3,20 @@ package ru.anydevprojects.locatask.editTask.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.anydevprojects.locatask.allTask.core.mvi.MVI
-import ru.anydevprojects.locatask.allTask.core.mvi.mvi
+import ru.anydevprojects.locatask.core.mvi.MVI
+import ru.anydevprojects.locatask.core.mvi.mvi
 import ru.anydevprojects.locatask.editTask.domain.EditTaskRepository
 import ru.anydevprojects.locatask.editTask.presentation.models.EventEditTask
 import ru.anydevprojects.locatask.editTask.presentation.models.IntentEditTask
 import ru.anydevprojects.locatask.editTask.presentation.models.StateEditTask
-import java.lang.Thread.State
 
 class EditTaskViewModel(
     private val taskId: String,
     private val editTaskRepository: EditTaskRepository
-) : ViewModel(), MVI<StateEditTask, IntentEditTask, EventEditTask> by mvi(
-    StateEditTask()
-) {
+) : ViewModel(),
+    MVI<StateEditTask, IntentEditTask, EventEditTask> by mvi(
+        StateEditTask()
+    ) {
 
     init {
         loadTaskIfEditMode()
@@ -52,13 +52,11 @@ class EditTaskViewModel(
         }
     }
 
-
     private fun updateTitle(title: String) {
         updateState {
             copy(title = title)
         }
     }
-
 
     private fun updateDescription(description: String) {
         updateState {
@@ -68,7 +66,6 @@ class EditTaskViewModel(
 
     private fun saveTask() {
         viewModelScope.launch {
-
             if (lastState.title.isEmpty()) {
                 emitEvent(EventEditTask.EmptyTitle)
                 return@launch

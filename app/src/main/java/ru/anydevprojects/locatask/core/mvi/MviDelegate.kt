@@ -1,4 +1,4 @@
-package ru.anydevprojects.locatask.allTask.core.mvi
+package ru.anydevprojects.locatask.core.mvi
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel

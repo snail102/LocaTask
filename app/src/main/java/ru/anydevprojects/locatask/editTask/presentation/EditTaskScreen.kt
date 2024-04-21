@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import ru.anydevprojects.locatask.allTask.core.mvi.CollectEvent
+import ru.anydevprojects.locatask.core.mvi.CollectEvent
 import ru.anydevprojects.locatask.editTask.presentation.models.EventEditTask
 import ru.anydevprojects.locatask.editTask.presentation.models.IntentEditTask
 

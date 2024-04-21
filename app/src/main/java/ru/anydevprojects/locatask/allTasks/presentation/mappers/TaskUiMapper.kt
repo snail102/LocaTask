@@ -1,6 +1,6 @@
-package ru.anydevprojects.locatask.allTask.presentation.mappers
+package ru.anydevprojects.locatask.allTasks.presentation.mappers
 
-import ru.anydevprojects.locatask.allTask.presentation.models.PreviewTask
+import ru.anydevprojects.locatask.allTasks.presentation.models.PreviewTask
 import ru.anydevprojects.locatask.domain.models.Task
 
 fun Task.toPreviewTask(): PreviewTask {

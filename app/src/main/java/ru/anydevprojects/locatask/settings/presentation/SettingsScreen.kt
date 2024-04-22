@@ -15,6 +15,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.koin.androidx.compose.koinViewModel
+import ru.anydevprojects.locatask.core.mvi.CollectEvent
+import ru.anydevprojects.locatask.root.Screens
+import ru.anydevprojects.locatask.settings.presentation.models.EventSettings
 import ru.anydevprojects.locatask.settings.presentation.models.IntentSettings
 
 @Composable
@@ -23,6 +26,15 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+
+    CollectEvent(event = viewModel.event) { event ->
+        when (event) {
+            EventSettings.NavigateToGetAccessCoarseLocationPermission -> navController.navigate(
+                Screens.InfoAboutPermission.route
+            )
+        }
+    }
+
     Scaffold {
         Column(
             modifier = Modifier

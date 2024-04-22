@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import ru.anydevprojects.locatask.editTask.presentation.EditTaskScreen
+import ru.anydevprojects.locatask.infoAboutPermission.presentation.InfoAboutMonitoringScreen
 import ru.anydevprojects.locatask.rootBottomNav.RootBottomScreen
 
 @Composable
@@ -30,6 +31,22 @@ fun RootNavHost(navController: NavHostController) {
             EditTaskScreen(
                 taskId = taskId,
                 navController = navController
+            )
+        }
+
+        composable(
+            route = Screens.InfoAboutPermission.route,
+            arguments = listOf(
+                navArgument(Screens.InfoAboutPermission.permissionArg) {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val permission = backStackEntry.arguments?.getString(
+                Screens.InfoAboutPermission.permissionArg
+            ) ?: throw Exception("Empty argument permission")
+            InfoAboutMonitoringScreen(
+                permission = permission
             )
         }
     }

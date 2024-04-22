@@ -67,8 +67,8 @@ class NetworkStateCheckService : Service() {
     private fun createNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val serviceChannel = NotificationChannel(
-                notificationId.toString(),
                 channelId,
+                notificationId.toString(),
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             getSystemService(

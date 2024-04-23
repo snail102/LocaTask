@@ -1,7 +1,8 @@
 package ru.anydevprojects.locatask.rootBottomNav
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -12,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -29,9 +31,11 @@ fun RootBottomScreen(
     Scaffold(
         bottomBar = { BottomBar(navController = navController) }
     ) {
-        Column {
-            RootBottomNavGraph(navController = navController, rootNavController = rootNavController)
-        }
+        RootBottomNavGraph(
+            modifier = Modifier.fillMaxSize().padding(it),
+            navController = navController,
+            rootNavController = rootNavController
+        )
     }
 }
 

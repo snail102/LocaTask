@@ -23,11 +23,11 @@ class EditTaskViewModel(
     }
 
     private fun loadTaskIfEditMode() {
-        if (taskId.isEmpty()) {
-            return
-        }
-
         viewModelScope.launch {
+            if (taskId.isEmpty()) {
+                return@launch
+            }
+
             updateState {
                 copy(
                     isLoading = true

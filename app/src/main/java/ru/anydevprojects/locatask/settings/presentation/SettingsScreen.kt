@@ -1,10 +1,10 @@
 package ru.anydevprojects.locatask.settings.presentation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
@@ -20,6 +20,7 @@ import ru.anydevprojects.locatask.root.Screens
 import ru.anydevprojects.locatask.settings.presentation.models.EventSettings
 import ru.anydevprojects.locatask.settings.presentation.models.IntentSettings
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SettingsScreen(
     navController: NavHostController,
@@ -39,7 +40,6 @@ fun SettingsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
         ) {
             if (state.isLoading) {
                 CircularProgressIndicator()

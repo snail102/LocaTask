@@ -16,12 +16,12 @@ sealed interface Screens {
     }
 
     data object InfoAboutPermission : Screens {
-        override val route: String = "infoAboutPermission"
+        override val route: String = "infoAboutPermission?={permission}"
 
         val permissionArg: String = "permission"
 
         fun getRouteWithArgs(permissionArg: String): String {
-            return "$route?=$permissionArg"
+            return "infoAboutPermission?=$permissionArg"
         }
     }
 
@@ -31,7 +31,7 @@ sealed interface Screens {
         val taskIdArg: String = "taskId"
 
         fun getRouteWithArgs(taskIdArg: String = ""): String {
-            return "$route?=$taskIdArg"
+            return "editTask?=$taskIdArg"
         }
     }
 }
